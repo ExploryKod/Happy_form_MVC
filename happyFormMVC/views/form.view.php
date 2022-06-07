@@ -16,24 +16,24 @@
            
                 <label for="first_name">Prénom <span>*</span> :</label>
                 <input class="input"  id="first_name" type="text" name="first_name" 
-                <?php if(isset($_GET["id"])): ?>value=<?= $client[0]["first_name"] ?><?php endif; ?> required >
+                <?php if(isset($_GET["id"])): ?>value="<?= $client[0]["first_name"] ?>"<?php endif; ?> required >
 
                 <label for="last_name">Nom <span>*</span> :</label>
                 <input class="input" id="last_name" type="text" name="last_name" 
-                <?php if(isset($_GET["id"])): ?>value=<?= $client[0]["last_name"] ?><?php endif; ?> required >
+                <?php if(isset($_GET["id"])): ?>value="<?= $client[0]["last_name"] ?>"<?php endif; ?> required >
                 
                 <label for="address">Adresse <span>*</span> :</label>
                 <textarea class="input" id="address" name="address"  cols="30" rows="4" placeholder="Indiquez ici: n° de rue, rue, ville, code-postal" onfocus="this.onfocus=null;" required ><?php if(isset($_GET["id"])): ?><?= $client[0]["address"]?> <?php endif; ?></textarea>
 
                 <label for="tel">Tél <span>*</span> :</label>
                 <input class="input" id="tel" type="tel" name="tel" 
-                <?php if(isset($_GET["id"])): ?>value=<?= $client[0]["telephone"] ?><?php endif; ?> required >
+                <?php if(isset($_GET["id"])): ?>value="<?= $client[0]["telephone"] ?>"<?php endif; ?> required >
 
                 <label for="date">Date de rendez-vous <span>*</span> :</label>
                 <input class="input" id="date" type="date" name="meeting"  min="2022-05-30" max="2032-05-30" aria-describedby="date-format"
-                <?php if(isset($_GET["id"])): ?> value=<?= $client[0]["meeting"] ?><?php endif; ?> required >
+                <?php if(isset($_GET["id"])): ?> value="<?= $client[0]["meeting"] ?>"<?php endif; ?> required >
                 
-                <input  id="client-id" type="hidden" name="client-id" value=<?= $_GET["id"] ?> >
+                <input  id="client-id" type="hidden" name="client-id" value="<?= $_GET["id"] ?>" >
             
                
             <div id="btn-container">

@@ -24,7 +24,7 @@ class MainController{
             "page_description" => "Affichage de la liste des clients",
             "page_title" => "Liste des clients",
             "page_css" => ["index.css"],
-            "page_javascript" => ["script.js"],
+            "page_javascript" => ["displayClients.js"],
             "clients" => $clients,
             "view" => "views/home.view.php",
             "template" => "views/common/template.php"
@@ -33,7 +33,7 @@ class MainController{
     }
 
     public function page1(){
-        $clients = $this->mainManager->getDatas();
+       
         $client = $this->mainManager->getClientData();
         $this->mainManager->deleteClientData();
         $this->mainManager->CreateClient();
@@ -44,7 +44,7 @@ class MainController{
             "page_title" => "Formulaire",
             "page_css" => ["form.css"],
             "client" => $client,
-            "page_javascript" => ["register.js"],
+            "page_javascript" => ["inputsValidation.js","openCloseForm.js","confirmPopUp.js"],
             "view" => "./views/form.view.php",
             "template" => "views/common/template.php"
         ];
