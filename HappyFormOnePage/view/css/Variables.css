@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+:root {
+
+    --box-shadow-color: rgba(0,0,0,0.2);
+
+    --dark-text-color:#03045e;
+    --white-text-color: #fff;
+
+    --form-container-bg-color:rgba(3, 4, 94,0.5); 
+    --form-bg-color: #fff; 
+
+    --form-validation-text-color: #03045e; 
+    --form-validation-bg-color:#669BBC; 
+
+    --textarea-text-focus-color: #03045e; 
+
+    --inputs-bg-color:rgba(3, 4, 94,0.1);
+    --inputs-bottom-border:#03045e;
+
+    --confirm-container-bg-color: rgba(3, 4, 94,0.5);
+    --confirm-container-content-bg-color: #fff;
+    --close-item-color:  rgb(3, 4, 94);
+}

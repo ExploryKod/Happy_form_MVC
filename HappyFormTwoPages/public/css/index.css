@@ -1,0 +1,112 @@
+@import 'variables.css';
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: min(18px, 1, 125rem);
+}
+
+main {
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Liste des clients */
+
+.table-container {
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0 0 20px var(--box-shadow-color);
+}
+
+.table {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#table-header {
+    color: #fff;
+    background-color: #03045e;
+}
+
+.table-row,
+.body-row {
+    display: grid;
+    text-decoration: none;
+    color: inherit;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 1em;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 1em;
+}
+
+.address-cell {
+    grid-column: 4 / span 2;
+}
+
+.body-row:nth-of-type(odd) {
+    background-color: #caf0f8;
+}
+
+.body-row:nth-last-of-type(1) {
+    border-bottom: 2px solid #03045e;
+}
+
+.table a:hover {
+    background-color: var(--table-row-hover-color);
+    color: var(--table-text-hover-color);
+    cursor: pointer;
+}
+
+/* Style du titre "Aucun client" */
+
+#no-client {
+    font-size: 1.6;
+    font-weight: 900;
+    margin-bottom: 3em;
+}
+
+/* Style du bouton pour créer un client et aller sur le formulaire */
+
+#btn-section {
+    margin-top: 1.5em;
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn-create-client {
+    text-decoration: none;
+    color: var(--btn-text-color);
+    background-color: var(--btn-bg-color);
+    border: 4px solid var(--btn-border-color);
+    padding: 1em 2em;
+    border-radius: 9px;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+#btn-create-client:hover {
+    transition: 220ms all ease-in-out;
+    background-color: var(--btn-hover-bg-color);
+    color: var(--btn-text-hover-color);
+    cursor: pointer;
+}

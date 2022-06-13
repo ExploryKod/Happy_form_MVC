@@ -1,0 +1,61 @@
+@import 'variables.css';
+
+body {
+  font-family: var(--font-family);
+}
+
+#error-container {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--modal-container-color);
+}
+
+#error-container-content {
+  background-color: var(--modal-bg-color);
+  margin: 15% auto;
+  padding: 2rem;
+  border: none;
+  border-radius: 15px;
+  width: 30%;
+  box-shadow: 0 0 10px var(--box-shadow-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+}
+
+#error-container-content h2 {
+  font-size: 1.5em;
+}
+
+
+.btn-go-home {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--btn-text-color);
+  background-color: var(--btn-bg-color);
+  border: 4px solid var(--btn-border-color);
+  padding: 1em 2em;
+  border-radius: 9px;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.btn-go-home:hover {
+  transition: 220ms all ease-in-out;
+  background-color: var(--btn-hover-bg-color);
+  color: var(--btn-text-hover-color);
+  text-decoration: none;
+  cursor: pointer;
+}

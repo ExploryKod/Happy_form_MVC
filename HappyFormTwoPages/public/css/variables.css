@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+:root {
+
+    --font-family: 'Open Sans', sans-serif;
+
+    --dark-text-color: #03045e;
+    --white-text-color: #fff;
+
+    /* Couleurs des boutons */
+    --btn-border-color: #03045e;
+    --btn-bg-color: hsla(240, 2%, 38%, 0.216);
+    --btn-hover-bg-color: #03045e;
+    --btn-text-color: #03045e;
+    --btn-text-hover-color: #fff;
+
+    /* Couleurs du tableau des clients */
+    --table-header-color: #03045e;
+    --table-row-hover-color: #508AA8;
+    --table-text-hover-color: #fff;
+    --table-border-color: #03045e;
+
+    /* Couleurs du formulaire */
+    --textarea-focus-bg-color: rgba(3, 4, 94, 0.1);
+    --form-field-bg-color: rgba(3, 4, 94, 0.1);
+    --from-field-border-color: #03045e;
+    --required-star-color: #ff0000;
+    --input-border-bottom: #508AA8;
+
+    --input-border: #8b8a8b;
+    --input-focus-h: 245;
+    --input-focus-s: 100%;
+    --input-focus-l: 42%;
+
+    /* Couleur de la fenêtre de confirmation */
+    --modal-container-color: rgba(3, 4, 94, 0.5);
+    --modal-bg-color: #fff;
+    --icon-close-color-hover: #ff0000;
+    --icon-close-color: rgb(3, 4, 94);
+
+
+    --box-shadow-color: rgba(0, 0, 0, 0.2);
+}
