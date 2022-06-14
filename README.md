@@ -12,14 +12,14 @@ le but est d'apprendre pour le première fois deux types de compétences fondame
 
 ## Technologie
 
-Langages: PHP 8.1/JavaScript/HTML/CSS
-Base de donnée: SQL/MySQL
+Langages: PHP 8.1/JavaScript/HTML/CSS<br/>
+Base de donnée: SQL/MySQL<br/>
 Serveur: Apache
 
 ## Installation
 
-Importer le fichier dans votre IDE via un git clone.
-Importer ou créer la base de donnée qui se trouve dans le repo: veiller à modifier les fichiers db_connexion (dans le model ou dans le dossier "data").
+Importer le fichier dans votre IDE via un git clone.<br/>
+Importer ou créer la base de donnée qui se trouve dans le repo: veiller à modifier les fichiers db_connexion (dans le model ou dans le dossier "data").<br/>
 Utiliser localhost pour utiliser le projet. 
 
 ## Evolution 
