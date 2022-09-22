@@ -2,7 +2,7 @@
   <img width="30%" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
 </p>
 
-# <a href="https://gladform.000webhostapp.com"><h1 align="center"> Happy Form </h1> </a>
+# <p align="center"><a href="https://gladform.000webhostapp.com" align="center">Happy Form </a></p>
 ## <p align="center"> Formulaire pour gérer une base de donnée client </p>
 
 ### Buts
