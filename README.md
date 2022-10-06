@@ -9,7 +9,7 @@
 
 le but est d'apprendre pour le première fois deux types de compétences fondamentales:
 - Le design pattern MVC pour la version en deux pages : HappyFormTwoPage.
-- Le fait de ne pas devoir recharger la page avec l'API fetch() pour la version "OnePage": HappyFormOnePage.
+- Usage de la technologie AJAX pour ne pas devoir recharger la page pour la version "OnePage": HappyFormOnePage.
 
 ## Technologie
 
