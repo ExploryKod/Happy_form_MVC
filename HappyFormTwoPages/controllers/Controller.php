@@ -20,6 +20,8 @@ class MainController
 {
     private $postData;
     private $getData;
+    private ?array $dataPage = [];
+    private array $methods = ["GET", "POST", "PUT", 'PATCH', 'DELETE', "OPTIONS"];
 
     public function __construct()
     {
@@ -27,9 +29,24 @@ class MainController
         $this->getData = new getData();
     }
 
-    private function generatePage($data)
+    public function getDataPage(): ?array
     {
-        extract($data);
+        return $this->dataPage;
+    }
+
+    /**
+     * @param string|null $controller
+     * @return array
+     */
+    public function setDataPage(?array $dataPage): array
+    {
+        $this->dataPage = $dataPage;
+        return $this;
+    }
+
+    private function generatePage()
+    {
+        extract($this->getDataPage());
         ob_start();
         require_once($view);
         $page_content = ob_get_clean();
@@ -49,7 +66,8 @@ class MainController
             "view" => "views/home.view.php",
             "template" => "views/common/template.php"
         ];
-        $this->generatePage($data_page);
+        $this->setDataPage($data_page);
+        $this->generatePage();
     }
 
     public function page1()
@@ -69,7 +87,8 @@ class MainController
             "view" => "./views/form.view.php",
             "template" => "views/common/template.php"
         ];
-        $this->generatePage($data_page);
+        $this->setDataPage($data_page);
+        $this->generatePage();
     }
 
     public function pageError($messageError)
