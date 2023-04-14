@@ -15,7 +15,10 @@ class getData extends DbConnexion
 
     public function getClientData()
     {
-        $id_client = $_GET["id"];
+        $id_client = 0;
+        if(isset($_GET["id"]))    {
+            $id_client = $_GET["id"];
+        }
         $reqDisplayClient = $this->getBdd()->prepare("SELECT id, `last_name`, `first_name`, `address`, `telephone`, 
                                         DATE_FORMAT(meeting_date, '%Y-%m-%d') as meeting, DATE_FORMAT(created, '%d/%m/%Y') as createdDate 
                                         FROM clients 

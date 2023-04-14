@@ -20,8 +20,8 @@ class MainController
 {
     private $postData;
     private $getData;
-    private ?array $dataPage = [];
-    private array $methods = ["GET", "POST", "PUT", 'PATCH', 'DELETE', "OPTIONS"];
+//    private ?array $dataPage = [];
+//    private array $methods = ["GET", "POST", "PUT", 'PATCH', 'DELETE', "OPTIONS"];
 
     public function __construct()
     {
@@ -29,24 +29,24 @@ class MainController
         $this->getData = new getData();
     }
 
-    public function getDataPage(): ?array
-    {
-        return $this->dataPage;
-    }
+//    public function getDataPage(): ?array
+//    {
+//        return $this->dataPage;
+//    }
+//
+//    /**
+//     * @param string|null $controller
+//     * @return array
+//     */
+//    public function setDataPage(?array $dataPage): array
+//    {
+//        $this->dataPage = $dataPage;
+//        return $this;
+//    }
 
-    /**
-     * @param string|null $controller
-     * @return array
-     */
-    public function setDataPage(?array $dataPage): array
+    private function generatePage($data)
     {
-        $this->dataPage = $dataPage;
-        return $this;
-    }
-
-    private function generatePage()
-    {
-        extract($this->getDataPage());
+        extract($data);
         ob_start();
         require_once($view);
         $page_content = ob_get_clean();
@@ -66,8 +66,8 @@ class MainController
             "view" => "views/home.view.php",
             "template" => "views/common/template.php"
         ];
-        $this->setDataPage($data_page);
-        $this->generatePage();
+//        $this->setDataPage($data_page);
+        $this->generatePage($data_page);
     }
 
     public function page1()
@@ -87,8 +87,8 @@ class MainController
             "view" => "./views/form.view.php",
             "template" => "views/common/template.php"
         ];
-        $this->setDataPage($data_page);
-        $this->generatePage();
+
+        $this->generatePage($data_page);
     }
 
     public function pageError($messageError)
