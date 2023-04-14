@@ -8,7 +8,7 @@
 ### Buts
 
 le but est d'apprendre pour le première fois deux types de compétences fondamentales:
-- Le design pattern MVC pour la version en deux pages : HappyFormTwoPage.
+- Usage du MVC (Model View Controller) pour la version en deux pages : HappyFormTwoPage.
 - Usage de la technologie AJAX pour ne pas devoir recharger la page pour la version "OnePage": HappyFormOnePage.
 
 ## Technologie
