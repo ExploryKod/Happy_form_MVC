@@ -20,6 +20,20 @@ Serveur: Apache
 ## Installation
 
 Importer le fichier dans votre IDE via un git clone.<br/>
+
+**Avec Docker, lancez la commande suivante:<br/>**
+Allez dans HappyFormTwoPage
+```bash
+docker compose up -d --build
+````
+Puis dans le dossier où se trouve le package.json:
+```bash
+npm install
+```
+
+**Sans Docker ou sur la version "OnePage":**
+Utilisez votre configuration custom ou via des outils comme MAMP, XAMPP etc...
+Technologies nécessaire: Apache, PHP 7.4 ou +, MySQL, Node (pour npm)
 Importer ou créer la base de donnée qui se trouve dans le repo: veiller à modifier les fichiers db_connexion (dans le model ou dans le dossier "data").<br/>
 Utiliser localhost pour utiliser le projet. 
 
@@ -28,5 +42,7 @@ Utiliser localhost pour utiliser le projet.
 Sur la base de ce formulaire, il est possible de penser de nombreuses fonctionnalités au service d'une organisation devant gérer ses données clients.
 - Classer et ordonner les clients
 - Ajouter des colonnes et des tables dans la base de donnée comme le fait d'avoir une réduction ou non
-
-Les enjeux de sécurité ne seront pas moindre. 
+- Mieux intégrer les enjeux de sécurité
+- Protéger l'ensemble par un formulaire d'accés au formulaire de gestion
+- Repenser le router (abandonner le switch case) et repenser la POO.
+- Ajouter l'autoload (via composer).
