@@ -20,12 +20,29 @@ class MainController
 {
     private $postData;
     private $getData;
+//    private ?array $dataPage = [];
+//    private array $methods = ["GET", "POST", "PUT", 'PATCH', 'DELETE', "OPTIONS"];
 
     public function __construct()
     {
         $this->postData = new postData();
         $this->getData = new getData();
     }
+
+//    public function getDataPage(): ?array
+//    {
+//        return $this->dataPage;
+//    }
+//
+//    /**
+//     * @param string|null $controller
+//     * @return array
+//     */
+//    public function setDataPage(?array $dataPage): array
+//    {
+//        $this->dataPage = $dataPage;
+//        return $this;
+//    }
 
     private function generatePage($data)
     {
@@ -49,6 +66,7 @@ class MainController
             "view" => "views/home.view.php",
             "template" => "views/common/template.php"
         ];
+//        $this->setDataPage($data_page);
         $this->generatePage($data_page);
     }
 
@@ -69,6 +87,7 @@ class MainController
             "view" => "./views/form.view.php",
             "template" => "views/common/template.php"
         ];
+
         $this->generatePage($data_page);
     }
 
