@@ -32,10 +32,11 @@ npm install
 ```
 
 **Sans Docker ou sur la version "OnePage":**
-Utilisez votre configuration custom ou via des outils comme MAMP, XAMPP etc...
-Technologies nécessaire: Apache, PHP 7.4 ou +, MySQL, Node (pour npm)
-Importer ou créer la base de donnée qui se trouve dans le repo: veiller à modifier les fichiers db_connexion (dans le model ou dans le dossier "data").<br/>
-Utiliser localhost pour utiliser le projet. 
+Utilisez votre configuration custom ou via des outils comme MAMP, XAMPP etc...<br/>
+Technologies nécessaire: Apache, PHP 7.4 ou +, MySQL, Node (pour npm)<br/>
+Importer ou créer la base de donnée qui se trouve dans le repo (database/dump.sql):<br/>
+- Adaptez db_connexion à votre situation (dans le model ou dans le dossier "data").
+- Connexion à la bdd: le host est db si usage de docker mais en général c'est localhost
 
 ## Evolution 
 
