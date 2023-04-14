@@ -18,8 +18,6 @@ class PostData extends DbConnexion
                 $tel = filter_input(INPUT_POST, "tel");
                 $meeting = filter_input(INPUT_POST, "meeting");
 
-                var_dump($tel);
-
                 // Nous vérifions qu'aucune entrée n'est vide
                 if (!empty($last_name) && !empty($first_name) && !empty($address) && !empty($tel) && !empty($meeting)) {
 
