@@ -1,6 +1,8 @@
 <?php
 require_once("./controllers/Controller.php");
+require_once("./controllers/CustomerFormController.php");
 $mainController = new MainController();
+$customerFormController = new customerFormController();
 
 try {
     if (empty($_GET['page'])) {
@@ -12,13 +14,13 @@ try {
 
     switch ($page) {
         case "accueil":
-            $mainController->accueil();
+            $customerFormController->accueil();
             break;
         case "formulaire":
-            $mainController->page1();
+            $customerFormController->page1();
             break;
         case "getData.model":
-            $mainController->page1();
+            $customerFormController->page1();
         default:
             throw new Exception("La page n'existe pas");
     }

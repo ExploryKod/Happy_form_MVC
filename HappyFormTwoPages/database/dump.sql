@@ -23,11 +23,18 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+CREATE TABLE IF NOT EXISTS `users` (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    token VARCHAR(255)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Table structure for table `clients`
 --
 
-CREATE TABLE `clients` (
+CREATE TABLE IF NOT EXISTS `clients` (
   `id` int(10) UNSIGNED NOT NULL,
   `last_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `first_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
