@@ -1,7 +1,7 @@
 <?php
 
-require_once("models/getData.model.php");
-require_once("models/postData.model.php");
+require_once("models/Managers/getData.model.php");
+require_once("models/Managers/postData.model.php");
 
 /**
  * La class MainController génère une page dans la vue à partir des données du model
