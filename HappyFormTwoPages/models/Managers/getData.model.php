@@ -1,5 +1,5 @@
-<?php 
-require_once("dbConnexion.model.php");
+<?php
+require_once("../Factory/dbConnexion.model.php");
 
 class getData extends DbConnexion
 {
@@ -13,12 +13,9 @@ class getData extends DbConnexion
         return $clients;
     }
 
-    public function getClientData()
+    public function getClientData(int $id_client)
     {
-        $id_client = 0;
-        if(isset($_GET["id"]))    {
-            $id_client = $_GET["id"];
-        }
+
         $reqDisplayClient = $this->getBdd()->prepare("SELECT id, `last_name`, `first_name`, `address`, `telephone`, 
                                         DATE_FORMAT(meeting_date, '%Y-%m-%d') as meeting, DATE_FORMAT(created, '%d/%m/%Y') as createdDate 
                                         FROM clients 
