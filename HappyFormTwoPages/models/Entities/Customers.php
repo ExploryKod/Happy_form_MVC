@@ -1,30 +1,30 @@
 <?php
-require_once("./InitEntity.php");
+require_once __DIR__ . '/InitEntity.php';
 
 class Customers extends InitEntity
 {
-    private ?int $id = null;
+    private int|string|null $id_client = null;
     private ?string $last_name = null;
     private ?string $first_name = null;
     private ?string $address = null;
-    private ?int $tel = null;
+    private ?string $tel = null;
     private ?string $meeting = null;
 
     /**
      * @return null
      */
-    public function getId()
+    public function getIdClient()
     {
-        return $this->id;
+        return $this->id_client;
     }
 
     /**
-     * @param $id
+     * @param $id_client
      * @return $this
      */
-    public function setId($id)
+    public function setIdClient($id_client)
     {
-        $this->id = $id;
+        $this->id_client = $id_client;
         return $this;
     }
 
@@ -56,7 +56,7 @@ class Customers extends InitEntity
         return $this->first_name;
     }
 
-    public function setFistName($first_name)
+    public function setFirstName($first_name)
     {
         $this->first_name = $first_name;
         return $this;
