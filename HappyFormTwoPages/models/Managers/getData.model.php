@@ -1,5 +1,6 @@
 <?php
-require_once("../Factory/dbConnexion.model.php");
+require_once __DIR__ . '/../Factory/dbConnexion.model.php';
+require_once __DIR__ . '/../Entities/Customers.php';
 
 class getData extends DbConnexion
 {
@@ -13,7 +14,7 @@ class getData extends DbConnexion
         return $clients;
     }
 
-    public function getClientData(int $id_client)
+    public function getClientData(?int $id_client)
     {
 
         $reqDisplayClient = $this->getBdd()->prepare("SELECT id, `last_name`, `first_name`, `address`, `telephone`, 
@@ -29,3 +30,4 @@ class getData extends DbConnexion
         return $client;
     }
 }
+

@@ -1,8 +1,28 @@
 <?php
 require_once("Controller.php");
 
-class customerFormController extends MainController
-{
+class CustomerFormController extends MainController {
+
+    private $client_datas;
+
+    protected function secureDatas()
+    {
+        // Récupération des données POST dans le tableau associatif $client_datas
+        $this->client_datas = filter_input_array(INPUT_POST, [
+            "id_client" => FILTER_SANITIZE_NUMBER_INT,
+            "last_name" => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            "first_name" => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            "address" => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            "tel" => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            "meeting" => FILTER_SANITIZE_FULL_SPECIAL_CHARS
+        ]);
+
+        // Boucle sur chaque valeur du tableau $client_datas
+        foreach ($this->client_datas as $key => $value) {
+            // Application de la fonction htmlspecialchars sur la valeur
+            $this->client_datas[$key] = htmlspecialchars($value, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        }
+    }
 
     public function accueil()
     {
@@ -24,49 +44,33 @@ class customerFormController extends MainController
     public function page1()
     {
         $id_client = null;
-        if(isset($_GET["id"]))    {
+        if(isset($_GET["id"])) {
             $id_client = $_GET["id"];
         }
-        $id = $_GET["id"];
-        $client = $this->getData->getClientData($id);
+
+        $client = $this->getData->getClientData($id_client);
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (isset($_POST['register'])) {
 
-                // Nous récupérons les entrées utilisateur via la méthode POST.
-//                $last_name = filter_input(INPUT_POST, "last_name");
-//                $first_name = filter_input(INPUT_POST, "first_name");
-//                $address = filter_input(INPUT_POST, "address");
-//                $tel = filter_input(INPUT_POST, "tel");
-//                $meeting = filter_input(INPUT_POST, "meeting");
-
-                $client_datas = [...$_POST];
+//                $this->secureDatas();
 
                 // Nous vérifions qu'aucune entrée n'est vide
-                if (!empty($client_datas)) {
 
-                    // Pour chaque entrée utilisateur : retirer les balises HTML/PHP et encoder les charactères.
-//                    $first_name = strip_tags($first_name);
-//                    $first_name = htmlentities($first_name);
-//
-//                    $last_name = strip_tags($last_name);
-//                    $last_name = htmlentities($last_name);
-//
-//                    $address = strip_tags($address);
-//                    $address = htmlentities($address);
-//
-//                    $tel = strip_tags($tel);
-//                    $tel = htmlentities($tel);
-//
-//                    $meeting = strip_tags($meeting);
-//                    $meeting = htmlentities($meeting);
+                $client_datas = [...$_POST];
+                $this->postData->CreateClient($client_datas);
 
+            }
 
-                    $this->postData->deleteClientData();
-                    $this->postData->CreateClient($client_datas);
-                    $this->postData->modifyClientData($client_datas);
-                }
+            if(isset($_POST['delete'])) {
+                $this->secureDatas();
+                $this->postData->deleteClientData($this->client_datas);
+            }
+
+            if(isset($_POST['modify'])) {
+                $this->secureDatas();
+                $this->postData->modifyClientData($this->client_datas);
             }
         }
 
