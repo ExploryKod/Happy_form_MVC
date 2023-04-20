@@ -3,6 +3,10 @@
 require_once __DIR__ . '/Router/PathMaker.php';
 $pathMaker = new PathMaker(__DIR__);
 
+// Ajout des catégories de chemin de fichiers
+$pathMaker->addDirPath('Router/','router');
+$pathMaker->addDirPath('controllers/','controllers');
+
 // Appel du routeur
 require_once $pathMaker->getFilePath('Router.php','router');
 $routeur = new Router();
