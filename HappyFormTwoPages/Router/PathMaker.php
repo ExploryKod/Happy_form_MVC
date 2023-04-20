@@ -4,7 +4,7 @@ class PathMaker {
     private string $basePath;
     private string $rootDirectory;
     private array $fileTypes = [];
-    private array $intermediateDirectories = [ 'controllers' => 'controllers/', 'router' => 'Router/'];
+    private array $intermediateDirectories = [];
 
     public function __construct(string $basePath = null) {
         if (!$basePath) {
@@ -30,6 +30,10 @@ class PathMaker {
 
     public function addFileType(string $fileType, string $directoryName) {
         $this->fileTypes[$fileType] = $directoryName;
+    }
+
+    public function addDirPath(string $directoryPath, string $directoryCategory) {
+        $this->intermediateDirectories[$directoryCategory] = $directoryPath;
     }
 
     public function getFilePath(string $fileName, ?string $fileCategory = "", ?string $fileType = null, ?string $baseDirectory = null) : string {
