@@ -6,6 +6,8 @@
 /vendor
 /node_modules
 ./HappyFormTwoPages/views/node_modules
+./HappyFormTwoPages/Router/error.log
+/error.log
 
 # vscode files
 *_i.c
