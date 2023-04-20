@@ -6,6 +6,8 @@ class Router
 
     public function addRoute($path, $callback)
     {
+        $path = htmlspecialchars($path);
+        $callback = htmlspecialchars($callback);
         $this->routes[$path] = $callback;
     }
 
