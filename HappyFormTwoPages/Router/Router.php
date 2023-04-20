@@ -1,13 +1,8 @@
 <?php
-require_once __DIR__ . '/Router/PathMaker.php';
-$pathMaker = new PathMaker(__DIR__);
-require_once $pathMaker->getFilePath('Controller.php','controllers');
-require_once $pathMaker->getFilePath('CustomerFormController.php','controllers');
-$customerFormController = new CustomerFormController();
 
 class Router
 {
-    private $routes = array();
+    private array $routes = array();
 
     public function addRoute($path, $callback)
     {
