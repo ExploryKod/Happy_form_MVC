@@ -1,39 +1,103 @@
 <?php
 
-require_once __DIR__ .'/../models/Managers/getData.model.php';
-require_once __DIR__ .'/../models/Managers/postData.model.php';
-
 class MainController
 {
-    protected PostData $postData;
-    protected GetData $getData;
+    private $postData;
+    private $getData;
 
-    public function __construct()
+    /**
+     * @return mixed
+     */
+    public function getPostData()
     {
-        $this->postData = new PostData();
-        $this->getData = new GetData();
+        return $this->postData;
     }
 
-    protected function generatePage($data)
+    /**
+     * @param mixed $postData
+     */
+    public function setPostData(postData $postData): array
+    {
+        $this->postData = $postData;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGetData()
+    {
+        return $this->getData;
+    }
+
+    /**
+     * @param mixed $getData
+     */
+    public function setGetData($getData)
+    {
+        $this->getData = $getData;
+    }
+
+
+    protected function generatePage(array $data)
     {
         extract($data);
         ob_start();
-        require_once($view);
+        require PAGE_VIEWS_DIR . $view;
         $page_content = ob_get_clean();
-        require_once($template);
+        require PAGE_VIEWS_DIR . 'common/template.php';
     }
 
-
-    public function pageError($messageError)
+    public function pageError(string $messageError)
     {
-        $data_page = [
-            "page_description" => "Page permettant de gérer les erreurs",
-            "page_title" => "Page d'erreur",
-            "messageError" => $messageError,
-            "page_css" => ["error.css"],
-            "view" => "./views/error.view.php",
-            "template" => "views/common/template.php"
-        ];
-        $this->generatePage($data_page);
+        $data = new PageData(
+            "Page d'erreur",
+            "Page permettant de gérer les erreurs",
+            ["error.css"],
+            new ErrorViewModel($messageError)
+        );
+        $this->generatePage($data->toArray());
     }
 }
+
+class PageData
+{
+    private $title;
+    private $description;
+    private $css;
+    private $viewModel;
+
+    public function __construct(string $title, string $description, array $css, $viewModel)
+    {
+        $this->title = $title;
+        $this->description = $description;
+        $this->css = $css;
+        $this->viewModel = $viewModel;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+            'css' => $this->css,
+            'viewModel' => $this->viewModel
+        ];
+    }
+}
+
+class ErrorViewModel
+{
+    private $message;
+
+    public function __construct(string $message)
+    {
+        $this->message = $message;
+    }
+
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+}
+
+define('PAGE_VIEWS_DIR', __DIR__ . '/../views/');
