@@ -6,12 +6,14 @@ $pathMaker = new PathMaker(__DIR__);
 // Ajout des catégories de chemin de fichiers
 $pathMaker->addDirPath('Router/','router');
 $pathMaker->addDirPath('controllers/','controllers');
-
+$pathMaker->addDirPath('models/Managers','models');
 // Appel du routeur
 require_once $pathMaker->getFilePath('Router.php','router');
 $routeur = new Router();
 
 // Appel des contrôleurs
+require_once $pathMaker->getFilePath('getData.model.php','models');
+require_once $pathMaker->getFilePath('postData.model.php','models');
 require_once $pathMaker->getFilePath('CustomerFormController.php','controllers');
 $customerFormController = new CustomerFormController();
 

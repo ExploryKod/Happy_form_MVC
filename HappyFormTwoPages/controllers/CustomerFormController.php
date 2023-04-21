@@ -1,5 +1,5 @@
 <?php
-require_once("Controller.php");
+require __DIR__ .'/Controller.php';
 
 class CustomerFormController extends MainController {
 
@@ -26,7 +26,8 @@ class CustomerFormController extends MainController {
 
     public function accueil()
     {
-        $clients = $this->getData->getDatas();
+        $getDatas = new GetData();
+        $clients = $getDatas->getDatas();
 
         $data_page = [
             "page_description" => "Affichage de la liste des clients",
@@ -34,8 +35,8 @@ class CustomerFormController extends MainController {
             "page_css" => ["index.css"],
             "page_javascript" => ["displayClients.js"],
             "clients" => $clients,
-            "view" => "views/home.view.php",
-            "template" => "views/common/template.php"
+            "view" => "home.view.php",
+            "template" => "common/template.php"
         ];
 
         $this->generatePage($data_page);
@@ -43,12 +44,15 @@ class CustomerFormController extends MainController {
 
     public function page1()
     {
+        $getDataObj = new getData;
+        $postDataObj = new postData;
         $id_client = null;
         if(isset($_GET["id"])) {
             $id_client = $_GET["id"];
         }
 
-        $client = $this->getData->getClientData($id_client);
+
+        $client = $getDataObj->getClientData($id_client);
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -59,18 +63,17 @@ class CustomerFormController extends MainController {
                 // Nous vérifions qu'aucune entrée n'est vide
 
                 $client_datas = [...$_POST];
-                $this->postData->CreateClient($client_datas);
-
+                $postDataObj->CreateClient($client_datas);
             }
 
             if(isset($_POST['delete'])) {
                 $this->secureDatas();
-                $this->postData->deleteClientData($this->client_datas);
+                $postDataObj->deleteClientData($this->client_datas);
             }
 
             if(isset($_POST['modify'])) {
                 $this->secureDatas();
-                $this->postData->modifyClientData($this->client_datas);
+                $postDataObj->modifyClientData($this->client_datas);
             }
         }
 
@@ -80,8 +83,8 @@ class CustomerFormController extends MainController {
             "page_css" => ["form.css"],
             "client" => $client,
             "page_javascript" => ["inputsValidation.js", "openCloseForm.js", "confirmPopUp.js"],
-            "view" => "./views/form.view.php",
-            "template" => "views/common/template.php"
+            "view" => "form.view.php",
+            "template" => "common/template.php"
         ];
 
         $this->generatePage($data_page);
