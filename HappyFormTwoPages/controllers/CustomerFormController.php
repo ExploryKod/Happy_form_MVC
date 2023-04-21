@@ -57,11 +57,6 @@ class CustomerFormController extends MainController {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (isset($_POST['register'])) {
-
-//                $this->secureDatas();
-
-                // Nous vérifions qu'aucune entrée n'est vide
-
                 $client_datas = [...$_POST];
                 $postDataObj->CreateClient($client_datas);
             }
