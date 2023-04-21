@@ -1,30 +1,22 @@
 <?php
-require_once("./controllers/Controller.php");
-require_once("./controllers/CustomerFormController.php");
-$mainController = new MainController();
-$customerFormController = new customerFormController();
+// Formatage des routes
+require_once __DIR__ . '/Router/PathMaker.php';
+$pathMaker = new PathMaker(__DIR__);
 
-try {
-    if (empty($_GET['page'])) {
-        $page = "accueil";
-    } else {
-        $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
-        $page = $url[0];
-    }
+// Ajout des catégories de chemin de fichiers
+$pathMaker->addDirPath('Router/','router');
+$pathMaker->addDirPath('controllers/','controllers');
 
-    switch ($page) {
-        case "accueil":
-            $customerFormController->accueil();
-            break;
-        case "formulaire":
-            $customerFormController->page1();
-            break;
-        case "getData.model":
-            $customerFormController->page1();
-        default:
-            throw new Exception("La page n'existe pas");
-    }
-} catch (Exception $e) {
-    $mainController->pageError($e->getMessage());
-}
+// Appel du routeur
+require_once $pathMaker->getFilePath('Router.php','router');
+$routeur = new Router();
+
+// Appel des contrôleurs
+require_once $pathMaker->getFilePath('CustomerFormController.php','controllers');
+$customerFormController = new CustomerFormController();
+
+// Liste des routes
+$routeur->addRoute("accueil", array($customerFormController, "accueil"));
+$routeur->addRoute("formulaire", array($customerFormController, "page1"));
+$routeur->handleRoutes($customerFormController);
 

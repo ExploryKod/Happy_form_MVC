@@ -33,7 +33,7 @@
                 <input class="input" id="date" type="date" name="meeting"  min="2022-05-30" max="2032-05-30" aria-describedby="date-format"
                 <?php if(isset($_GET["id"])): ?> value="<?= $client[0]["meeting"] ?>"<?php endif; ?> required >
                 
-                <input  id="client-id" type="hidden" name="client-id" <?php if(isset($_GET["id"])): ?>value="<?= $_GET["id"] ?>"<?php endif; ?> >
+                <input  id="client-id" type="hidden" name="id_client" <?php if(isset($_GET["id"])): ?>value="<?= $_GET["id"] ?>"<?php endif; ?> >
 
             <div id="btn-container">
         <?php 
