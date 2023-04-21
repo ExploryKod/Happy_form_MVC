@@ -4,20 +4,20 @@ class Router
 {
     private array $routes = array();
 
-    public function addRoute($path, $callback)
+    public function addRoute($path, array $callback)
     {
         $path = htmlspecialchars($path);
-        $callback = htmlspecialchars($callback);
         $this->routes[$path] = $callback;
     }
 
     public function handleRequest($path)
     {
+        $path = htmlspecialchars($path);
         if (isset($this->routes[$path])) {
             $callback = $this->routes[$path];
             $callback();
         } else {
-            throw new Exception("La page demandée n'existe pas.");
+            throw new Exception("La page ' . $path .' n'existe pas.");
         }
     }
 
