@@ -42,12 +42,18 @@ class MainController
     {
         extract($data);
         ob_start();
-        require PAGE_VIEWS_DIR . $view;
+        if(isset($view)) {
+            require PAGE_VIEWS_DIR . $view;
+        } else {
+            $messageError = 'Page 404 - la page recherché n\'existe pas';
+            $view = 'error.view.php';
+            require PAGE_VIEWS_DIR . $view;
+        }
         $page_content = ob_get_clean();
         require PAGE_VIEWS_DIR . 'common/template.php';
     }
 
-    public function pageError(string $messageError)
+    public function pageError(string $messageError = "")
     {
         $data = new PageData(
             "Page d'erreur",

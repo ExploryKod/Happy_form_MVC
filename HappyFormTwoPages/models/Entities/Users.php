@@ -8,6 +8,16 @@ class Users extends InitEntity
     private ?string $username = null;
     private ?string $password = null;
     private ?string $token = null;
+    private ?string $session = null;
+
+    public function getSession(): ?string {
+        return $this->session;
+    }
+
+    public function setSession(?string $session): void
+    {
+        $this->session = $session;
+    }
 
     /**
      * @return string|null
