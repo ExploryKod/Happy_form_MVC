@@ -27,7 +27,7 @@
 
                 <label for="tel">Tél <span>*</span> :</label>
                 <input class="input" id="tel" type="tel" name="tel" aria-required="true" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
-                <?php if(isset($_GET["id"])): ?>value="<?= $client[0]["telephone"] ?>"<?php endif; ?> required >
+                <?php if(isset($_GET["id"])): ?>value="<?= $client[0]["telephone"] ?>"<?php endif; ?> >
 
                 <label for="date">Date de rendez-vous <span>*</span> :</label>
                 <input class="input" id="date" type="date" name="meeting"  min="2022-05-30" max="2032-05-30" aria-describedby="date-format"

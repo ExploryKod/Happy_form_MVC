@@ -9,8 +9,16 @@ abstract class DbConnexion
 
     private static function setBdd()
     {
-        self::$pdo = new PDO("mysql:host=db;dbname=db_clients_homeclik_exercice;charset=utf8", "root", "root");
-        self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+        try {
+            self::$pdo = new PDO("mysql:host=db;dbname=db_clients_homeclik_exercice;charset=utf8", "root", "root");
+            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+        } catch (PDOException $e) {
+            // Handle the error here
+            echo "Failed to connect to the database: " . $e->getMessage();
+        }
+
+//        self::$pdo = new PDO("mysql:host=db;dbname=db_clients_homeclik_exercice;charset=utf8", "root", "root");
+//        self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
     protected function getBdd()

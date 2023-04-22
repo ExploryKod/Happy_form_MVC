@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once __DIR__ . '/vendor/autoload.php';
 // Formatage des routes
 require_once __DIR__ . '/Router/PathMaker.php';
 $pathMaker = new PathMaker(__DIR__);
@@ -15,10 +17,14 @@ $routeur = new Router();
 require_once $pathMaker->getFilePath('getData.model.php','models');
 require_once $pathMaker->getFilePath('postData.model.php','models');
 require_once $pathMaker->getFilePath('CustomerFormController.php','controllers');
+require_once $pathMaker->getFilePath('AccountsController.php','controllers');
 $customerFormController = new CustomerFormController();
-
+$accountsController = new AccountsController();
 // Liste des routes
 $routeur->addRoute("accueil", array($customerFormController, "accueil"));
 $routeur->addRoute("formulaire", array($customerFormController, "page1"));
+$routeur->addRoute("login", array($accountsController, "login"));
+$routeur->addRoute("login", array($accountsController, "signUp"));
 $routeur->handleRoutes($customerFormController);
+$routeur->handleRoutes($accountsController);
 
