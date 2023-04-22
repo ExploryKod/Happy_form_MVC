@@ -4,7 +4,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Formatage des routes
 require_once __DIR__ . '/Router/PathMaker.php';
 $pathMaker = new PathMaker(__DIR__);
-
 // Ajout des catégories de chemin de fichiers
 $pathMaker->addDirPath('Router/','router');
 $pathMaker->addDirPath('controllers/','controllers');
@@ -20,11 +19,20 @@ require_once $pathMaker->getFilePath('CustomerFormController.php','controllers')
 require_once $pathMaker->getFilePath('AccountsController.php','controllers');
 $customerFormController = new CustomerFormController();
 $accountsController = new AccountsController();
+
 // Liste des routes
-$routeur->addRoute("accueil", array($customerFormController, "accueil"));
-$routeur->addRoute("formulaire", array($customerFormController, "page1"));
+$routeur->addRoute("account", array($accountsController, "loginFormPage"));
 $routeur->addRoute("login", array($accountsController, "login"));
-$routeur->addRoute("login", array($accountsController, "signUp"));
-$routeur->handleRoutes($customerFormController);
+$routeur->addRoute("register", array($accountsController, "signUp"));
 $routeur->handleRoutes($accountsController);
+
+if(!empty($_SESSION['user']) && isset($_SESSION['user'])) {
+    $routeur->addRoute("accueil", array($customerFormController, "accueil"));
+    $routeur->addRoute("formulaire", array($customerFormController, "page1"));
+    $routeur->handleRoutes($customerFormController);
+}
+
+
+
+
 

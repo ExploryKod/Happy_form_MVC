@@ -6,10 +6,35 @@ require_once dirname(__FILE__, 2).'/models/Managers/postUserData.model.php';
 
 class AccountsController extends MainController
 {
-    public function login()
+
+    private function accountDatas($user, $view, $message = "")
+    {
+
+          $data_page = [
+            "page_description" => "S'enregistrer",
+            "page_title" => "login",
+            "page_css" => ["form.css"],
+            "user" => $user,
+             "message" => $message,
+            "page_javascript" => ["inputsValidation.js", "openCloseForm.js", "confirmPopUp.js"],
+            "view" => $view,
+            "template" => "common/template.php"
+        ];
+
+        $this->generatePage($data_page);
+    }
+
+    public function loginFormPage($message = "")
     {
         $user = null;
+        $view = 'login.view.php';
+        $this->accountDatas($user, $view, $message);
+    }
+
+    public function login()
+    {
         if(isset($_POST['account_login']))  {
+            $message = "Se connecter à votre compte";
             if(isset($username) && isset($password)) {
                 $username = $_POST['username'];
                 $password = $_POST['password'];
@@ -17,32 +42,30 @@ class AccountsController extends MainController
                 $postUserData = new postUserData();
                 $user = $getUserData->getUserByName($username);
 
-            if ($user && $user->verifyPassword($password)) {
+            if($user && $user->verifyPassword($password)) {
                 $jwt = JWTHelper::buildJWT($user);
                 $user->setToken($jwt);
                 $postUserData->update($user);
-
+                $_SESSION['user'] = $username;
+                $user->setSession($_SESSION['user']);
+                http_response_code(200);
+                $view = 'login.view.php';
+                $this->accountDatas($user, $view, $message);
+                header('Location: \accueil');
+                exit();
+                } else  {
+                    header('Location: \?error=passwordinvalid');
+                    exit();
                 }
             }
         }
-
-        $data_page = [
-            "page_description" => "S'enregistrer",
-            "page_title" => "login",
-            "page_css" => ["form.css"],
-            "user" => $user,
-            "page_javascript" => ["inputsValidation.js", "openCloseForm.js", "confirmPopUp.js"],
-            "view" => "login.view.php",
-            "template" => "common/template.php"
-        ];
-
-        $this->generatePage($data_page);
+        $this->signUp();
     }
 
     public function signUp()
     {
-        $user = null;
         if(isset($_POST['account_register']))  {
+            $message = "S'enregistrer à votre compte";
             $username = $_POST['username'];
             if(isset($username)) {
 
@@ -57,19 +80,17 @@ class AccountsController extends MainController
                     $jwt = JWTHelper::buildJWT($user);
                     $user->setToken($jwt);
                     $postUserData->update($user);
+                    $view = 'login.view.php';
+                    $this->accountDatas($user, $view, $message);
+                    http_response_code(200);
+                    header('Location: \login?message=ok');
+                    exit();
                 }
             }
+        } else  {
+            $message = "Vous n'avez pas pu vous enregistrer";
+            $this->loginFormPage($message);
         }
-        $data_page = [
-            "page_description" => "S'enregistrer",
-            "page_title" => "SignUp",
-            "page_css" => ["form.css"],
-            "user" => $user,
-            "page_javascript" => ["inputsValidation.js", "openCloseForm.js", "confirmPopUp.js"],
-            "view" => "login.view.php",
-            "template" => "common/template.php"
-        ];
-        $this->generatePage($data_page);
     }
 
     public function signout()
