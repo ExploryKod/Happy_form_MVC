@@ -16,7 +16,7 @@ services:
         restart: always
         environment:
             MYSQL_DATABASE: db_clients_homeclik_exercice
-            MYSQL_ROOT_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: hero
         volumes:
             - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     phpmyadmin:

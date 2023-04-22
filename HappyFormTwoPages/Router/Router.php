@@ -21,7 +21,7 @@ class Router
         }
     }
 
-    public function handleRoutes(CustomerFormController $errors)  {
+    public function handleRoutes($errors)  {
         try {
             if (empty($_GET['page'])) {
                     $page = "accueil";

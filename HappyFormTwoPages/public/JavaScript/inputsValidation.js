@@ -20,7 +20,7 @@ const fp = flatpickr(DatePickerInput, {
 
 // Fonctions pour formatter l'entrée du champ de numéro de téléphone
 let inputTel = document.querySelector('#tel');
-// Fonction visant à formatter une valeur en entrée et la retourne au format xx xx xx xx xx (ex: 02 80 23 12 26).
+//Fonction visant à formatter une valeur en entrée et la retourne au format xx xx xx xx xx (ex: 02 80 23 12 26).
 const formatTelInput = (values) => {
   let phonePattern = 'xx xx xx xx xx'
 
@@ -55,5 +55,5 @@ const eraseTelInput = (e) => {
 }
 
 
-inputTel.addEventListener('keyup', formatTelNumber);
+// inputTel.addEventListener('keyup', formatTelNumber);
 inputTel.addEventListener('keydown', eraseTelInput);
