@@ -24,13 +24,12 @@ $accountsController = new AccountsController();
 $routeur->addRoute("account", array($accountsController, "loginFormPage"));
 $routeur->addRoute("login", array($accountsController, "login"));
 $routeur->addRoute("register", array($accountsController, "signUp"));
+$routeur->addRoute("out", array($accountsController, "signOut"));
 $routeur->handleRoutes($accountsController);
+$routeur->addRoute("accueil", array($customerFormController, "accueil"));
+$routeur->addRoute("formulaire", array($customerFormController, "page1"));
+$routeur->handleRoutes($customerFormController);
 
-if(!empty($_SESSION['user']) && isset($_SESSION['user'])) {
-    $routeur->addRoute("accueil", array($customerFormController, "accueil"));
-    $routeur->addRoute("formulaire", array($customerFormController, "page1"));
-    $routeur->handleRoutes($customerFormController);
-}
 
 
 

@@ -45,64 +45,29 @@ class MainController
         if(isset($view)) {
             require PAGE_VIEWS_DIR . $view;
         } else {
-            $messageError = 'Page 404 - la page recherché n\'existe pas';
-            $view = 'error.view.php';
-            require PAGE_VIEWS_DIR . $view;
+            $this->pageError("la page n'existe pas", false);
         }
         $page_content = ob_get_clean();
         require PAGE_VIEWS_DIR . 'common/template.php';
     }
 
-    public function pageError(string $messageError = "")
+    public function pageError(string $messageError = "", bool $generate = true, string $view = 'error.view.php')
     {
-        $data = new PageData(
-            "Page d'erreur",
-            "Page permettant de gérer les erreurs",
-            ["error.css"],
-            new ErrorViewModel($messageError)
-        );
-        $this->generatePage($data->toArray());
-    }
-}
-
-class PageData
-{
-    private $title;
-    private $description;
-    private $css;
-    private $viewModel;
-
-    public function __construct(string $title, string $description, array $css, $viewModel)
-    {
-        $this->title = $title;
-        $this->description = $description;
-        $this->css = $css;
-        $this->viewModel = $viewModel;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'title' => $this->title,
-            'description' => $this->description,
-            'css' => $this->css,
-            'viewModel' => $this->viewModel
+        $data_page = [
+            "page_description" => "Page d'erreur",
+            "page_title" => "Erreur",
+            "page_css" => ["error.css"],
+            "messageError" => $messageError,
+            "view" => $view,
+            "template" => "common/template.php"
         ];
-    }
-}
 
-class ErrorViewModel
-{
-    private $message;
-
-    public function __construct(string $message)
-    {
-        $this->message = $message;
-    }
-
-    public function getMessage(): string
-    {
-        return $this->message;
+        if($generate)  {
+            $this->generatePage($data_page);
+        } else  {
+            extract($data_page);
+            require PAGE_VIEWS_DIR . $view;
+        }
     }
 }
 

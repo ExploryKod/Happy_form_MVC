@@ -17,14 +17,14 @@ class Router
             $callback = $this->routes[$path];
             $callback();
         } else {
-            throw new Exception("La page ' . $path .' n'existe pas.");
+            throw new Exception("La page $path n'existe pas.");
         }
     }
 
     public function handleRoutes($errors)  {
         try {
             if (empty($_GET['page'])) {
-                    $page = "accueil";
+                    $page = "account";
             } else {
                 $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
                 $page = $url[0];
@@ -32,7 +32,8 @@ class Router
 
             $this->handleRequest($page);
             } catch (Exception $e) {
-                $errors->pageError($e->getMessage());
+                $errorMsg = sprintf("Erreur générale:\n %s.\n", $e->getMessage());
+                error_log($errorMsg, 3, __DIR__.'/error.log');
             }
     }
 }
