@@ -47,14 +47,9 @@ class PathMaker {
             $array_parent_path[] = $value;
         }
         if(!in_array($fileCategory, $array_categories) ) {
-            $errorMsg = sprintf('Category de fichier non-reconnu : %s. Voici les catégories: %s. Les chemins possibles: %s.', $fileCategory, implode(',', array_map('htmlspecialchars', $array_categories)), implode('  ', array_map('htmlspecialchars', $array_parent_path)));
-
-            // Log the error message to a file
+            $errorMsg = sprintf("Category de fichier non-reconnu : %s. Voici les catégories: %s. Les chemins possibles: %s.\n", $fileCategory, implode(',', array_map('htmlspecialchars', $array_categories)), implode('  ', array_map('htmlspecialchars', $array_parent_path)));
             error_log($errorMsg, 3, __DIR__.'/error.log');
-
-            // Throw an exception without the error message
             throw new Exception('Nous ne trouvons pas la catégorie '. $fileCategory . '. Plus d\'explications dans les logs.');
-
         }
 
         foreach($this->intermediateDirectories as $key => $value) {
