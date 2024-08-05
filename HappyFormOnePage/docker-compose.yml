@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+    php:
+        container_name: web
+        build:
+            context: .
+            dockerfile: Dev.Dockerfile
+        ports:
+            - '1221:80'
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www/html
+
+    db:
+        container_name: bdd
+        image: 'mariadb'
+        restart: always
+        environment:
+            MYSQL_DATABASE: db_clients
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - ./bdd/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    phpmyadmin:
+        container_name: dbbview
+        image: phpmyadmin
+        restart: always
+        ports:
+            - '1005:80'
+        environment:
+            - PMA_ARBITRARY=1
