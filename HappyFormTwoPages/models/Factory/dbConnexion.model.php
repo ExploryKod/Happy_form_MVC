@@ -5,11 +5,15 @@
  */
 abstract class DbConnexion
 {
-    private static $pdo;
+    private static PDO $pdo;
+    private static string $host;
+    private static string $dbName;
+    private static string $userName;
+    private static string $password;
 
     private static function setBdd()
     {
-        self::$pdo = new PDO("mysql:host=db;dbname=db_clients_homeclik_exercice;charset=utf8", "root", "root");
+        self::$pdo = new PDO("mysql:host=" . self::$host=getenv('DB_HOST') . ";dbname=" . self::$dbName=getenv('DB_DATABASE'), self::$userName=getenv('DB_USERNAME'), self::$password=getenv('DB_PASSWORD'));
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
