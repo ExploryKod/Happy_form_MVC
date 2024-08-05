@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-    <link rel="stylesheet" href="./css/clientsList.css">
-    <link rel="stylesheet" href="./css/form.style.css">
+    <link rel="stylesheet" href="./view/css/clientsList.css">
+    <link rel="stylesheet" href="./view/css/form.style.css">
 
     <title>Gestion des clients</title>
 </head>
@@ -90,11 +90,11 @@
     </main>
 </body>
 
-<script type="module" src="javaScript/general.js?<?php echo time(); ?>"></script>
-<script type="module" src="javaScript/ManageClientsTable.js?<?php echo time(); ?>"></script>
-<script type="module" src="javaScript/getData.js?<?php echo time(); ?>"></script>
-<script type="module" src="javaScript/postData.js?<?php echo time(); ?>"></script>
-<script type="module" src="javaScript/InputsValidation.js?<?php echo time(); ?>"></script>
-<script type="module" src="javaScript/openCloseForm.js?<?php echo time(); ?>"></script>
+<script type="module" src="./view/javaScript/general.js?<?php echo time(); ?>"></script>
+<script type="module" src="./view/javaScript/ManageClientsTable.js?<?php echo time(); ?>"></script>
+<script type="module" src="./view/javaScript/getData.js?<?php echo time(); ?>"></script>
+<script type="module" src="./view/javaScript/postData.js?<?php echo time(); ?>"></script>
+<script type="module" src="./view/javaScript/InputsValidation.js?<?php echo time(); ?>"></script>
+<script type="module" src="./view/javaScript/openCloseForm.js?<?php echo time(); ?>"></script>
 
 </html>
