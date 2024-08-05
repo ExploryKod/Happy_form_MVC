@@ -33,7 +33,7 @@
                 <label for="address">Adresse <span>*</span> :</label>
                 <textarea class="input" name="address" id="address" cols="30" rows="4"  maxlength="950" placeholder="Indiquez ici: n° de rue, rue, ville, code-postal" onfocus="this.onfocus=null;" aria-required="true" required></textarea>
 
-                <label for="tel">Tél (format: xx xx xx xx xx) <span>*</span> :</label>
+                <label for="tel">Tél (format français: xx xx xx xx xx) <span>*</span> :</label>
                 <input class="input" type="tel" name="tel" id="tel" aria-required="true" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" required>
 
                 <label for="date">Date de rendez-vous <span>*</span> :</label>

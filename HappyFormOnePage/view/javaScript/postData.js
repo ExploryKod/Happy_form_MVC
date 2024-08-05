@@ -7,7 +7,7 @@ let form = document.querySelector('form');
 form.addEventListener('submit', function (event) {
   event.preventDefault()
 
-  fetch('../data/register.php', {
+  fetch('./data/register.php', {
     method: 'POST',
     body: new FormData(this),
   }).then(() => {
@@ -18,7 +18,7 @@ form.addEventListener('submit', function (event) {
 
 // function permettant de demander au serveur la suppression d'un client
 function deleteClient() {
-  fetch('../data/delete.php', {
+  fetch('./data/delete.php', {
     method: 'POST',
     body: new FormData(form),
   }).then(() => {

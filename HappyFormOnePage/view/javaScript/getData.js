@@ -16,7 +16,7 @@ export function refreshState() {
 
   const clientsList = document.querySelector('#clients-list');
 
-  fetch('../data/displayClients.php', {
+  fetch('./data/displayClients.php', {
     method: "GET",
     headers: { "Content-type": "application/json;charset=UTF-8" }
   })
