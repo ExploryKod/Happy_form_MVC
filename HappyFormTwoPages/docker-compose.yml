@@ -4,7 +4,7 @@ services:
     php:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dev.Dockerfile
         ports:
             - '1221:80'
         restart: unless-stopped
