@@ -7,11 +7,11 @@
 
 ### Buts
 
-le but est d'apprendre pour le première fois deux types de compétences fondamentales:
-- Usage du MVC (Model View Controller) pour la version en deux pages : HappyFormTwoPage.
-- Usage de la technologie AJAX pour ne pas devoir recharger la page pour la version "OnePage": HappyFormOnePage.
+Le but est d'apprendre pour la première fois deux types de compétences fondamentales :
+- Usage du MVC (Model-View-Controller) pour la version en deux pages : HappyFormTwoPage.
+- Usage de la technologie AJAX pour ne pas devoir recharger la page pour la version « OnePage » : HappyFormOnePage.
 
-Le projet est en php pure ce qui en fait son intérêt pour apprendre. Il est simple mais démontre déjà des bases intéressante sur plusieurs aspects de la maîtrise d'une architecture de base et des langages php, JS et SQL.
+Le projet est en PHP pur, ce qui en fait son intérêt pour apprendre. Il est simple, mais démontre déjà des bases intéressantes sur plusieurs aspects de la maîtrise d'une architecture de base et des langages PHP, JS et SQL.
 
 ## Technologie
 
@@ -34,20 +34,21 @@ npm install
 ```
 
 **Sans Docker ou sur la version "OnePage":**
-Utilisez votre configuration custom ou via des outils comme MAMP, XAMPP etc...<br/>
-Technologies nécessaire: Apache, PHP 7.4 ou +, MySQL, Node (pour npm)<br/>
-Importer ou créer la base de donnée qui se trouve dans le repo (database/dump.sql):<br/>
-- Adaptez db_connexion à votre situation (dans le model ou dans le dossier "data").
-- Connexion à la bdd: le host est db si usage de docker mais en général c'est localhost
+
+Utilisez votre configuration personnalisée ou des outils comme MAMP, XAMPP, etc.
+Technologies nécessaires : Apache, PHP 7.4 ou +, MySQL, Node (pour npm).
+Importer ou créer la base de données qui se trouve dans le dépôt (database/dump.sql) :
+- Adaptez db_connexion à votre situation (dans le modèle ou dans le dossier "data").
+- Connexion à la BDD : le host est « db » si usage de Docker, mais en général, c'est « localhost ».
 
 ## Evolution potentielles
 
 Sur la base de ce formulaire, il est possible de penser de nombreuses fonctionnalités au service d'une organisation devant gérer ses données clients.
-Ce sont de possibles évolutions du projet : 
+Voici de possibles évolutions du projet : 
 
-- Classer et ordonner les clients
-- Ajouter des colonnes et des tables dans la base de donnée comme le fait d'avoir une réduction ou non
-- Mieux intégrer les enjeux de sécurité
-- Protéger l'ensemble par un formulaire d'accés au formulaire de gestion
-- Repenser le router (abandonner le switch case) et repenser la POO.
-- Ajouter l'autoload (via composer).
+- Classer et ordonner les clients.
+- Ajouter des colonnes et des tables dans la base de données, comme la gestion d'une réduction ou non.
+- Mieux intégrer les enjeux de sécurité.
+- Protéger l'ensemble par un formulaire d'accès au formulaire de gestion.
+- Repenser le routeur (abandonner le switch-case) et repenser la POO.
+- Ajouter l'autoload (via Composer).
