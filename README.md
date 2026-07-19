@@ -11,6 +11,8 @@ le but est d'apprendre pour le première fois deux types de compétences fondame
 - Usage du MVC (Model View Controller) pour la version en deux pages : HappyFormTwoPage.
 - Usage de la technologie AJAX pour ne pas devoir recharger la page pour la version "OnePage": HappyFormOnePage.
 
+Le projet est en php pure ce qui en fait son intérêt pour apprendre. Il est simple mais démontre déjà des bases intéressante sur plusieurs aspects de la maîtrise d'une architecture de base et des langages php, JS et SQL.
+
 ## Technologie
 
 Langages: PHP 8.1/JavaScript/HTML/CSS<br/>
@@ -38,9 +40,11 @@ Importer ou créer la base de donnée qui se trouve dans le repo (database/dump.
 - Adaptez db_connexion à votre situation (dans le model ou dans le dossier "data").
 - Connexion à la bdd: le host est db si usage de docker mais en général c'est localhost
 
-## Evolution 
+## Evolution potentielles
 
 Sur la base de ce formulaire, il est possible de penser de nombreuses fonctionnalités au service d'une organisation devant gérer ses données clients.
+Ce sont de possibles évolutions du projet : 
+
 - Classer et ordonner les clients
 - Ajouter des colonnes et des tables dans la base de donnée comme le fait d'avoir une réduction ou non
 - Mieux intégrer les enjeux de sécurité
